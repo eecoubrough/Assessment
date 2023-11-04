@@ -5,16 +5,9 @@ function initMap() {
         zoom: 6
     })
 
-    d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
+   d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
         console.log(data);
     });
-
-    d3.json("data.json")        
-    .then(function (data) {            
-    // Manipulate and transform the data            
-    // Create the visualization        })        
-    .catch(function (error) {            
-    // Handle any errors        });
 
     // Load JSON data from the provided feed
     // d3.json("http://34.38.72.236/Circles/Towns/50")
