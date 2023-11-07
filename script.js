@@ -10,23 +10,23 @@ function initMap() {
     });
 
     //Load JSON data from the provided feed
-    //d3.json("http://34.38.72.236/Circles/Towns/50")
-        //.then(data => {
+    d3.json("http://34.38.72.236/Circles/Towns/50")
+        .then(data => {
             //Assuming the JSON contains an array of town objects with lat and lng properties
-           //data.forEach(town => {
-                //const position = { lat: town.lat, lng: town.lng };
+           data.forEach(town => {
+                const position = { lat: town.lat, lng: town.lng };
 
                 // Create a marker for each town
-                //new google.maps.Marker({
-                    //position: position,
-                   //map: map,
-                   //title: town.name // You should adjust this to match your JSON structure
-                //});
-           // });
-       // })
-       // .catch(error => {
-            //console.error("Failed to load data:", error);
-       //});
+                new google.maps.Marker({
+                    position: position,
+                    map: map,
+                   title: town.name // You should adjust this to match your JSON structure
+                });
+           });
+       })
+       .catch(error => {
+            console.error("Failed to load data:", error);
+       });
 }
 
 

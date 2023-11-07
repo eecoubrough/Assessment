@@ -2,7 +2,6 @@
 const d3 = require('d3');
 const topojson = require('topojson-client');
 
-//testing
 // Set up the SVG container for the map
 const svg = d3.select('#map-container')
   .append('svg')
@@ -36,5 +35,4 @@ const svg = d3.select('#map-container')
 
         // Plot towns on the map
         svg.selectAll('.town')
-          .data(townsData)
-        }
+          .data(townsData)}
