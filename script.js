@@ -1,3 +1,4 @@
+//Draw map of the UK
 function initMap() {
     // Create a map centered around the UK
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -5,11 +6,12 @@ function initMap() {
         zoom: 6
     })
 
+//D3 program that consumes the feed
    d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
         console.log(data);
     });
 
-    //Load JSON data from the provided feed
+//Plot the towns from the JSON feed onto the map
     d3.json("http://34.38.72.236/Circles/Towns/50")
         .then(data => {
             //Assuming the JSON contains an array of town objects with lat and lng properties
