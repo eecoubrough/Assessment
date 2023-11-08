@@ -27,9 +27,16 @@ function initMap() {
                         content: `<h2>${town.name}</h2><p>Population: ${town.population}</p>`
                      });
 
-                    // Attach event listeners to the markers
-                    marker.addListener("click", () => {
+
+                    // Event listeners for the markers
+                    // Info window opens when mouse hovers over the marker
+                    marker.addListener("mouseover", () => {
                         infoWindow.open(map, marker);
+                    });
+
+                    // Info window closes when mouse leaves the marker
+                    marker.addListener("mouseout", () => {
+                        infoWindow.close(map, marker);
                     });
                 });
              })
