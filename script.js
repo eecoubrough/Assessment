@@ -22,18 +22,17 @@ function initMap() {
                     position: position,
                     map: map
                 });
+                    // Create an info window for each marker
+                    const infoWindow = new google.maps.InfoWindow({
+                        content: `<h2>${town.name}</h2><p>Population: ${town.population}</p>`
+                     });
 
-                        // Create an info window for each marker
-                        const infoWindow = new google.maps.InfoWindow({
-                            content: `<h2>${town.name}</h2><p>Population: ${town.population}</p>`
-                        });
-
-                        // Attach event listeners to the markers
-                        marker.addListener("click", () => {
-                            infoWindow.open(map, marker);
-                        });
+                    // Attach event listeners to the markers
+                    marker.addListener("click", () => {
+                        infoWindow.open(map, marker);
                     });
-                })
+                });
+             })
         .catch(error => {
             console.error("Failed to load data:", error);
         });
