@@ -42,4 +42,17 @@ function initMap() {
         .catch(error => {
             console.error("Failed to load data:", error);
         });
+    // Initialize the markers with the initial slider value
+    updateMarkers(10);
+
+    // Get the slider element and its associated span
+    const slider = document.getElementById("townsSlider");
+    const sliderValue = document.getElementById("sliderValue");
+
+    // Update the markers when the slider value changes
+    slider.addEventListener("input", function () {
+        const numTowns = parseInt(this.value, 10);
+        sliderValue.textContent = numTowns + " Towns";
+        updateMarkers(numTowns);
+    });
 }
