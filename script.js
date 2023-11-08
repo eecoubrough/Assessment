@@ -25,7 +25,7 @@ function initMap() {
                 });
                     // Create an info window for each marker
                     const infoWindow = new google.maps.InfoWindow({
-                        content: `<h2>${town.name}</h2><p>Population: ${town.Population}</p>`
+                        content: `<h2>${town.Town}</h2><p>County: ${town.County}</p><p>Population: ${town.Population}</p>`
                      });
 
                     // Info window opens when mouse hovers over the marker
