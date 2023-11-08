@@ -6,7 +6,6 @@ function initMap() {
         zoom: 5.5
     })
 
-
 //D3 program that consumes the feed
    d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
         console.log(data);
@@ -24,17 +23,17 @@ function initMap() {
                     map: map
                 });
 
-                // Create an info window
-                const infoWindow = new google.maps.InfoWindow({
-                    content: `<strong>${town.name}</strong><br>Population: ${town.population}`
-                });
+                        // Create an info window for each marker
+                        const infoWindow = new google.maps.InfoWindow({
+                            content: `<h2>${town.name}</h2><p>Population: ${town.population}</p>`
+                        });
 
-                // Open the info window when the marker is clicked
-                marker.addListener("click", () => {
-                    infoWindow.open(map, marker);
-                });
-            });
-        })
+                        // Attach event listeners to the markers
+                        marker.addListener("click", () => {
+                            infoWindow.open(map, marker);
+                        });
+                    });
+                })
         .catch(error => {
             console.error("Failed to load data:", error);
         });
