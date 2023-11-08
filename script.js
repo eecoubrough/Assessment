@@ -5,7 +5,7 @@ function initMap() {
         center: { lat:  54.70897993855097, lng: -3.03060503561271},
         zoom: 5.5
     })
-    
+
 
 //D3 program that consumes the feed
    d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
@@ -19,17 +19,23 @@ function initMap() {
                 const position = { lat: town.lat, lng: town.lng };
 
                 // Create a marker for each town
-                new google.maps.Marker({
+                const marker = new google.maps.Marker({
                     position: position,
-                    map: map,
-                   title: town.name
+                    map: map
                 });
-           });
-       })
-       .catch(error => {
+
+                // Create an info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<strong>${town.name}</strong><br>Population: ${town.population}`
+                });
+
+                // Open the info window when the marker is clicked
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        })
+        .catch(error => {
             console.error("Failed to load data:", error);
-       });
+        });
 }
-
-
-    
