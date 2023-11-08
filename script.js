@@ -20,15 +20,14 @@ function initMap() {
                 // Create a marker for each town
                 const marker = new google.maps.Marker({
                     position: position,
-                    map: map
+                    map: map,
+                    animation: google.maps.Animation.DROP,
                 });
                     // Create an info window for each marker
                     const infoWindow = new google.maps.InfoWindow({
                         content: `<h2>${town.name}</h2><p>Population: ${town.population}</p>`
                      });
 
-
-                    // Event listeners for the markers
                     // Info window opens when mouse hovers over the marker
                     marker.addListener("mouseover", () => {
                         infoWindow.open(map, marker);
