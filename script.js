@@ -49,12 +49,12 @@ function initMap() {
                 const sliderValue = document.getElementById("sliderValue");
 
                 // Function to update the number of displayed towns based on the slider value
-                const numTowns = parseInt(this.value, 10);
+                const numTowns = parseInt(this.value, 50);
                 function updateMarkers(numTowns) {
                 }
 
                 // Initialize the slider with the default value
-                updateMarkers(10);
+                updateMarkers(50);
 
                 slider.addEventListener("input", function () {
                     const numTowns = parseInt(this.value, 10);
@@ -64,7 +64,6 @@ function initMap() {
                 });
             });
         })
-
         .catch(error => {
             console.error("Failed to load data:", error);
         });
