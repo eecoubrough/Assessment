@@ -3,7 +3,8 @@ function initMap() {
     // Create a map centered around the UK
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat:  54.70897993855097, lng: -3.03060503561271},
-        zoom: 5.5
+        zoom: 5.5,
+        mapTypeId: google.maps.MapTypeId.HYBRID
     })
 
 //D3 program that consumes the feed
@@ -37,28 +38,28 @@ function initMap() {
                     marker.addListener("mouseout", () => {
                         infoWindow.close(map, marker);
                     });
+
+                     // Get the slider element and its associated span
+                    const slider = document.getElementById("townsSlider");
+                    const sliderValue = document.getElementById("sliderValue");
+
+                    // Function to update the number of displayed towns based on the slider value
+                    function updateMarkers(numTowns) {
+                    // Your code to update the displayed towns based on 'numTowns'
+                    }
+
+                    // Initialize the slider with the default value
+                     //updateMarkers(10);
+
+                    // Add an event listener to update the number of towns when the slider value changes
+                     slider.addEventListener("input", function () {
+                        const numTowns = parseInt(this.value, 10);
+                        sliderValue.textContent = numTowns + " towns";
+                        updateMarkers(numTowns);
+                     });
                 });
              })
         .catch(error => {
             console.error("Failed to load data:", error);
         });
-
-    // Get the slider element and its associated span
-        const slider = document.getElementById("townsSlider");
-        const sliderValue = document.getElementById("sliderValue");
-
-    // Function to update the number of displayed towns based on the slider value
-        function updateMarkers(numTowns) {
-        // Your code to update the displayed towns based on 'numTowns'
-    }
-
-    // Initialize the slider with the default value
-    updateMarkers(10);
-
-    // Add an event listener to update the number of towns when the slider value changes
-        slider.addEventListener("input", function () {
-            const numTowns = parseInt(this.value, 10);
-             sliderValue.textContent = numTowns + " towns";
-            updateMarkers(numTowns);
-    });
 }
