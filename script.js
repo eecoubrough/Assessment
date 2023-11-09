@@ -1,6 +1,5 @@
 //Draw map of the UK
 function initMap() {
-    // Create a map centered around the UK
     const map = new google.maps.Map(document.getElementById("map"), {
         center: { lat:  54.70897993855097, lng: -3.03060503561271},
         zoom: 5.5,
@@ -44,18 +43,17 @@ function initMap() {
                     });
                     
 
-                // Get the slider element and its associated span
+                // Define/Get the slider element and value
                 const slider = document.getElementById("townsSlider");
                 const sliderValue = document.getElementById("sliderValue");
 
-                // Function to update the number of displayed towns based on the slider value
+                // Updates the number of displayed towns based on the slider value
                 const numTowns = parseInt(this.value, 50);
                 function updateMarkers(numTowns) {
                 }
 
-                // Initialize the slider with the default value
                 updateMarkers(50);
-
+                //Add event listener so that the written number of towns changes based on the slider input
                 slider.addEventListener("input", function () {
                     const numTowns = parseInt(this.value, 10);
                     console.log("Slider value:", numTowns);
