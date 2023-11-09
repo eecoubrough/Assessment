@@ -8,15 +8,18 @@ function initMap() {
     })
 
 //D3 program that consumes the feed
-   d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
+    d3.json("http://34.38.72.236/Circles/Towns/50", function(data) {
         console.log(data);
-    });
+    });   
 
 //Plot the towns from the JSON feed onto the map
     d3.json("http://34.38.72.236/Circles/Towns/50")
         .then(data => {
            data.forEach(town => {
-                const position = { lat: town.lat, lng: town.lng };
+                const position = { 
+                    lat: town.lat, 
+                    lng: town.lng 
+                };
 
                 // Create a marker for each town
                 const marker = new google.maps.Marker({
@@ -24,6 +27,7 @@ function initMap() {
                     map: map,
                     animation: google.maps.Animation.DROP,
                 });
+
                     // Create an info window for each marker
                     const infoWindow = new google.maps.InfoWindow({
                         content: `<h2>${town.Town}</h2><p>County: ${town.County}</p><p>Population: ${town.Population}</p>`
@@ -38,27 +42,29 @@ function initMap() {
                     marker.addListener("mouseout", () => {
                         infoWindow.close(map, marker);
                     });
+                    
 
-                     // Get the slider element and its associated span
-                    const slider = document.getElementById("townsSlider");
-                    const sliderValue = document.getElementById("sliderValue");
+                // Get the slider element and its associated span
+                const slider = document.getElementById("townsSlider");
+                const sliderValue = document.getElementById("sliderValue");
 
-                    // Function to update the number of displayed towns based on the slider value
-                    function updateMarkers(numTowns) {
-                    // Your code to update the displayed towns based on 'numTowns'
-                    }
+                // Function to update the number of displayed towns based on the slider value
+                const numTowns = parseInt(this.value, 10);
+                function updateMarkers(numTowns) {
+                }
 
-                    // Initialize the slider with the default value
-                     //updateMarkers(10);
+                // Initialize the slider with the default value
+                updateMarkers(10);
 
-                    // Add an event listener to update the number of towns when the slider value changes
-                     slider.addEventListener("input", function () {
-                        const numTowns = parseInt(this.value, 10);
-                        sliderValue.textContent = numTowns + " towns";
-                        updateMarkers(numTowns);
-                     });
+                slider.addEventListener("input", function () {
+                    const numTowns = parseInt(this.value, 10);
+                    console.log("Slider value:", numTowns);
+                    sliderValue.textContent = numTowns + " towns";
+                    updateMarkers(numTowns);
                 });
-             })
+            });
+        })
+
         .catch(error => {
             console.error("Failed to load data:", error);
         });
