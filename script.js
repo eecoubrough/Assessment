@@ -50,7 +50,6 @@ function initMap() {
     // Function to update the number of displayed towns based on the slider value
         function updateMarkers(numTowns) {
         // Your code to update the displayed towns based on 'numTowns'
-        // You can place your existing code here
     }
 
     // Initialize the slider with the default value
